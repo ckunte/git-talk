@@ -3,12 +3,13 @@
   #import "@preview/polylux:0.3.1": *
   #import themes.simple: *
   #set text(
-    font: "Publico Text",
+    font: "erewhon",
     top-edge: "cap-height",
     bottom-edge: "baseline",
     number-type: "old-style",
   )
-  #show raw: set text(font: "PT Mono", size: 24pt)
+  #show raw: set text(font: "PT Mono", size: 21pt)
+  #set raw(syntaxes: "/inc/Bash.sublime-syntax")
   #show link: set text(fill: rgb(0, 0, 255))
   #set page(paper: "presentation-16-9")
   #set text(size: 36pt)
@@ -30,13 +31,15 @@
 
   C Kunte #footnote[Principal engineer, Kent plc]
 
-  19 July 2024
+  August 2024
 ]
 
 #slide[
   #side-by-side[
 
-  #rect(image("/inc/final.png"))
+  #rect(
+    image("/inc/final.png") // courtesy: PhD comics
+  )
 
   ][
 
@@ -59,9 +62,9 @@
   #side-by-side[
   = why?
 
-    - traceability
+    - traceability (granular level)
     - better diffs
-    - branch, work on parts, merge back
+    - branch out #sym.arrow.r work on parts #sym.arrow.r merge back
     - reuse, collaboration
     - retaining history
     - disciplined work
@@ -75,11 +78,11 @@
 
   = software
 
-  - 1986: CVS
-  - 1992: TeamWare
-  - 2000: Subversion, BitKeeper
-  - 2003: Monotone
-  - 2005: git, Mercurial
+  / 1986: CVS
+  / 1992: TeamWare
+  / 2000: Subversion, BitKeeper
+  / 2003: Monotone
+  / 2005: git, Mercurial
 
   ]
 ]
@@ -92,51 +95,60 @@
 
 #slide[
   #side-by-side[
-    = git
-    
-    - a DVCS
-    - a suite of terminal programs
-    - great software; bad UI/UX
-    - GUI interface(s) available
-    - best with plain text files
-    - not for tracking binary files
-
-  ][
     = background
 
-    / 1991: Linus begins a project called linux
-    / 2005: He creates git #footnote[Not without drama, see #link("https://blog.brachiosoft.com/en/posts/git/")[_"A git story: not so fun this time"_]] to best manage code contributions to linux
-    / 2022: git at 94% market share
+    / 1991: Linus begins a hobby project called linux
+
+    / 2005: Linus creates git to manage linux including kernel code contributions from others
+
+    / 2008: GitHub is born, makes git very popular
+
+    / 2022: git now at 94% market share
+
+    // reference links: 
+    //  https://youtu.be/0m4hlWx7oRk
+    //  https://blog.brachiosoft.com/en/posts/git/
+  
+  ][
+    = git
+    
+    - DVCS
+    - a bunch of CLI programs (100+)
+    - great software; bad UI/UX
+    - GUI clients #sym.arrow.r sanity
+    - originally designed for linux FS; now available for all OSes
+    - for plain text files 
+    - not for tracking binary files
+
   ]
 ]
 
 #focus-slide[
 
-  = version control with git
+  = version control _with_ git
 
 ]
 
 #slide[
   #side-by-side[
     #figure(
-      image("/inc/git-xkcd.png"),
-      // courtesy: Randall Monroe, https://xkcd.com/1597/
+      image("/inc/git-xkcd.png"), // courtesy: https://xkcd.com/1597/
     )
   ][
     = how to?
 
     - initialise a working folder
+    - check status
     - add files
     - commit added files
-    - push (if server is used)
 
     = basic commands
 
-    ```
+    ```bash
     git init
-    git add <filenames>
-    git commit -m "comments"
-    git push
+    git status
+    git add
+    git commit
     ```
   ]
 ]
@@ -145,7 +157,7 @@
 
 = init, add, commit
 
-  ```shell
+  ```bash
   $ git init
   Initialized empty Git repository in ~/model/.git/
 
@@ -156,4 +168,32 @@
    1 file changed, 1 insertion(+)
    create mode 100644 README.md 
   ``` 
+]
+
+#focus-slide[
+  = what just happened?
+]
+
+#slide[
+  == `git init`
+  - creates a subfolder `.git` within the working folder
+  - `.git` folder collects filesystem snapshots of the working folder
+  - to be used only once while creating a repository
+
+  == `git add`
+  - for tracking files of interest, they first need to be added
+
+  == `git commit`
+  - a command for taking a filesystem snapshot (of added files)
+  - uses secure hash algorithm (SHA) #sym.arrow.r for data integrity
+  - commits never change; their IDs are computed from their contents
+
+]
+
+#focus-slide[
+  = demo
+]
+
+#focus-slide[
+  = thank you; questions?
 ]
