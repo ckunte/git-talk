@@ -3,12 +3,12 @@
   #import "@preview/polylux:0.3.1": *
   #import themes.simple: *
   #set text(
-    font: "erewhon",
+    font: "Publico Text",
     top-edge: "cap-height",
     bottom-edge: "baseline",
     number-type: "old-style",
   )
-  #show raw: set text(font: "PT Mono", size: 21pt)
+  #show raw: set text(font: "PT Mono", size: 24pt)
   #set raw(syntaxes: "/inc/Bash.sublime-syntax")
   #show link: set text(fill: rgb(0, 0, 255))
   #set page(paper: "presentation-16-9")
@@ -101,9 +101,7 @@
 
     / 2005: Linus creates git to manage linux including kernel code contributions from others
 
-    / 2008: GitHub is born, makes git very popular
-
-    / 2022: git now at 94% market share
+    / 2008: GitHub is born, makes git very popular; 94% market share by 2022
 
     // reference links: 
     //  https://youtu.be/0m4hlWx7oRk
@@ -113,7 +111,7 @@
     = git
     
     - DVCS
-    - a bunch of CLI programs (100+)
+    - a bunch of CLI programs
     - great software; bad UI/UX
     - GUI clients #sym.arrow.r sanity
     - originally designed for linux FS; now available for all OSes
@@ -178,7 +176,6 @@
   == `git init`
   - creates a subfolder `.git` within the working folder
   - `.git` folder collects filesystem snapshots of the working folder
-  - to be used only once while creating a repository
 
   == `git add`
   - for tracking files of interest, they first need to be added
@@ -189,6 +186,12 @@
   - commits never change; their IDs are computed from their contents
 
 ]
+#focus-slide[
+
+  = ignore _certain_ files
+
+]
+
 
 #slide[
   = `.gitignore`
@@ -200,7 +203,7 @@
   *.pdf
   *.xlsx
   ```
-  Include only (reverse of ignore):
+  Inverting ignore:
 
   ```bash
   *
@@ -211,9 +214,23 @@
   - `!` applies an exception to include only files with `.inp` extension
 ]
 
+#focus-slide[
+  
+ = git config
+
+]
+
 #slide[
 
   = `.gitconfig`
+
+  - Handy if commits are pushed to a remote server
+  - Commits signed with digital keys to prevent author spoofing
+  - Either GPG or SSH keys can be used for signing commits
+  - Keys are private; never share
+  - Public key cryptography for signing commits commonly used
+  - The example uses elliptic cryptography (EdDSA + curve 25519)
+
 
   ```bash
 [user]
@@ -223,7 +240,11 @@
 [commit]
   gpgsign = true
 [tag]
-    gpgsign = true
+  gpgsign = true
+[gpg]
+  format = ssh
+[gpg "ssh"]
+  allowedSignersFile = ~/.ssh/allowed_signers
 [init]
   defaultBranch = master
 [core]
