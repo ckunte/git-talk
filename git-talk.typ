@@ -190,6 +190,54 @@
 
 ]
 
+#slide[
+  = `.gitignore`
+
+  - git has a provision for ignoring files of disinterest
+  - `.gitignore` file in the repository does the job, e.g.
+
+  ```bash
+  *.pdf
+  *.xlsx
+  ```
+  Include only (reverse of ignore):
+
+  ```bash
+  *
+  !*.inp
+  ```
+
+  - `*` to ignore all
+  - `!` applies an exception to include only files with `.inp` extension
+]
+
+#slide[
+
+  = `.gitconfig`
+
+  ```bash
+[user]
+  name = Chetan Kunte
+  email = 177423+ckunte@users.noreply.github.com
+  signingkey = ~/.ssh/id_ed25519.pub
+[commit]
+  gpgsign = true
+[tag]
+    gpgsign = true
+[init]
+  defaultBranch = master
+[core]
+  autocrlf = input
+  ```
+]
+
+#slide[
+  #figure(
+    image("/inc/smerge.png", width: 74%),
+  ) <sm>
+    
+]
+
 #focus-slide[
   = demo
 ]
