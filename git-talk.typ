@@ -1,26 +1,15 @@
 // preamble 
-
   #import "@preview/polylux:0.3.1": *
   #import themes.simple: *
-  #set text(
-    font: "Publico Text",
-    top-edge: "cap-height",
-    bottom-edge: "baseline",
-    number-type: "old-style",
-  )
-  #show raw: set text(font: "PT Mono", size: 24pt)
-  #set raw(syntaxes: "/inc/Bash.sublime-syntax")
-  #show link: set text(fill: rgb(0, 0, 255))
   #set page(paper: "presentation-16-9")
-  #set text(size: 36pt)
-  #let sc(content) = text(features: ("c2sc",))[#content]
-  #show regex("[A-Z]{2,}"): match => {
-    sc(match)
-  }
   #show: simple-theme.with(
     footer: [version control for engineers],
   )
-
+  #set text(font: "Helvetica Neue", size: 24pt) // main font used
+  #show raw: set text(font: "Menlo", size: 18pt) // font for code
+  #set raw(syntaxes: "/inc/Bash.sublime-syntax") // for highlighting
+  #show link: set text(fill: rgb(0, 0, 255)) // show links w/ colour
+//
 #title-slide[
 
   = version control for engineers
@@ -60,7 +49,7 @@
 
 #slide[
   #side-by-side[
-  = why?
+  = why
 
     - recording change _explicitly_
     - _atomic_ level traceability
@@ -115,7 +104,7 @@
     - a bunch of CLI programs
     - great software; bad UI/UX
     - open source, free
-    - GUI clients #sym.arrow.r sanity
+    - GUI clients = sanity
     - originally designed for linux FS; now available for all OSes
     - #highlight[for plain text] files 
     - not for tracking binary files
@@ -135,7 +124,7 @@
       image("/inc/git-xkcd.png"), // courtesy: https://xkcd.com/1597/
     )
   ][
-    = how to?
+    = how to
 
     - initialise a working folder
     - check status
@@ -149,6 +138,7 @@
     git status
     git add
     git commit
+    git log
     ```
   ]
 ]
@@ -175,17 +165,17 @@
 ]
 
 #slide[
-  == `git init`
+  == git init
   - creates a subfolder `.git` within the working folder
   - `.git` folder collects filesystem snapshots of the working folder
 
-  == `git add`
+  == git add
   - for tracking files of interest, they first need to be added
 
-  == `git commit`
+  == git commit
   - a command for taking a filesystem snapshot (of added files)
   - uses secure hash algorithm (SHA) #sym.arrow.r for data integrity
-  - commits never change; their IDs are computed from their contents
+  - commits never change; IDs are computed from their contents
 
 ]
 
@@ -214,7 +204,7 @@
 #slide[
 
   #figure(
-    image("/inc/smerge0.png", width: auto),
+    image("/inc/smerge0.png", height: auto),
   ) <sm0>
   
 ]
@@ -228,7 +218,7 @@
 #slide[
 
   #figure(
-    image("/inc/gitlog.png", width: auto),
+    image("/inc/gitlog.png", height: auto),
   ) <gitlog>
     
 ]
@@ -236,7 +226,7 @@
 #slide[
 
   #figure(
-    image("/inc/smerge.png", width: auto),
+    image("/inc/smerge.png", height: auto),
   ) <sm1>
   
 ]
@@ -308,7 +298,7 @@
 ]
 
 #focus-slide[
-  = demo. #footnote[_esc from present mode, and into a terminal #sym.arrow.r _]
+  = demo.
 ]
 
 #slide[
