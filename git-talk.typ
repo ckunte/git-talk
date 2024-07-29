@@ -190,7 +190,7 @@
   - a command for taking a filesystem snapshot (of added files)
   - uses secure hash algorithm (SHA) #sym.arrow.r for data integrity
   - commits never change; IDs are computed from their contents
-  - Designed initially with SHA-1; SHA-256 used now to avoid collision
+  - Designed initially with SHA1; SHA256 used now to avoid collision
 
 ]
 
