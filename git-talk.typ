@@ -5,8 +5,8 @@
   #show: simple-theme.with(
     footer: [version control for engineers],
   )
-  #set text(font: "Helvetica Neue", size: 24pt) // main font used
-  #show raw: set text(font: "Menlo", size: 18pt) // font for code
+  #set text(font: "Helvetica Neue", size:24pt) // main font used
+  #show raw: set text(font: "PT Mono", size: 21pt) // font for code
   #set raw(syntaxes: "/inc/Bash.sublime-syntax") // for highlighting
   #show link: set text(fill: rgb(0, 0, 255)) // show links w/ colour
 //
@@ -18,7 +18,7 @@
 
   #v(0.5em)
 
-  C Kunte #footnote[Principal engineer, Kent plc]
+  C Kunte
 
   August 2024
 ]
@@ -100,7 +100,7 @@
   ][
     = git
     
-    - DVCS
+    - DVCS, portable
     - a bunch of CLI programs
     - great software; bad UI/UX
     - open source, free
@@ -124,6 +124,7 @@
       image("/inc/git-xkcd.png"), // courtesy: https://xkcd.com/1597/
     )
   ][
+
     = how to
 
     - initialise a working folder
@@ -145,7 +146,7 @@
 
 #slide[
 
-= init, add, commit
+  = init, add, commit
 
   ```bash
   $ git init
@@ -161,12 +162,14 @@
 ]
 
 #focus-slide[
+
   = what just happened?
 ]
 
 #slide[
+
   == git init
-  - creates a subfolder `.git` within the working folder
+  - creates a subfolder named `.git` within the working folder
   - `.git` folder collects filesystem snapshots of the working folder
 
   == git add
@@ -176,19 +179,22 @@
   - a command for taking a filesystem snapshot (of added files)
   - uses secure hash algorithm (SHA) #sym.arrow.r for data integrity
   - commits never change; IDs are computed from their contents
+  - Designed initially with SHA-1; SHA-256 used now to avoid collision
 
 ]
 
 #focus-slide[
+
   == commit is a two-stage process
-  add files (new, changed)\
-  commit those changes
+  *add* files (new, changed)\
+  *commit* those changes
 
   i.e., recording change _explicitly_
 
 ]
 
 #focus-slide[
+
   = git status
 
 ]
@@ -211,6 +217,7 @@
 
 
 #focus-slide[
+
   = git log
 
 ]
@@ -239,10 +246,10 @@
 
 
 #slide[
-  = `.gitignore`
+  = .gitignore
 
   - git has a provision for ignoring files of disinterest
-  - `.gitignore` file in the repository does the job, e.g.
+  - .gitignore file in the repository does the job, e.g.
 
   ```bash
   *.pdf
@@ -267,7 +274,7 @@
 
 #slide[
 
-  = `.gitconfig`
+  = .gitconfig
 
   - Handy if commits are pushed to a remote server
   - Commits signed with digital keys to prevent author spoofing
@@ -299,6 +306,25 @@
 
 #focus-slide[
   = demo.
+
+  _(Terminal and GUI sessions)_
+]
+
+#slide[
+  
+  = version control -- best practices
+
+  - make small, incremental changes
+  - keep commits atomic
+    - test before committing
+    - get feedback through (e.g. peer) reviews
+    - avoid committing incomplete work (units) and unnecessary files
+    - commit often
+    - write clear and concise commit messages
+  - develop using branches (treat 'master' or 'main' branch sacred)
+  - agree on a workflow / branching strategy
+  - keep the repository clean and up to-date
+
 ]
 
 #slide[
@@ -313,6 +339,21 @@
   - a git history (#link("https://blog.brachiosoft.com/en/posts/git/")[blog.brachiosoft.com/en/posts/git/])
   - "how git works" illustrated (#link("https://wizardzines.com/zines/git")[wizardzines.com/zines/git])
   - Linus's talk about git c. 2007 (#link("https://youtu.be/MjIPv8a0hU8")[youtu.be/MjIPv8a0hU8])
+
+]
+
+#slide[
+  = What about MORGAN -- kent's model management system
+
+  - a git repository is _complementary_ to MORGAN system
+  - think of MORGAN model as a bundle, and
+  - git repo. as a history of atomic changes _within_ this bundle
+  - history of (atomic) changes reside within the subfolder `.git`
+  - with git, MORGAN will
+    - not require an external diff system (git is _really_ fast)
+    - not require the need to work with multiple version folders
+    - be simple to track changes
+    - be compact, and history is portable (i.e. one `.git` folder)
 
 ]
 
