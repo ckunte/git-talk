@@ -5,10 +5,21 @@
   #show: simple-theme.with(
     footer: [version control for engineers],
   )
-  #set text(font: "Helvetica Neue", size:24pt) // main font used
+  #set text(
+    font: "erewhon",
+    top-edge: "cap-height",
+    bottom-edge: "baseline",
+    number-type: "old-style",
+    size:24pt
+  ) // main font used
   #show raw: set text(font: "PT Mono", size: 21pt) // font for code
   #set raw(syntaxes: "/inc/Bash.sublime-syntax") // for highlighting
   #show link: set text(fill: rgb(0, 0, 255)) // show links w/ colour
+  #let sc(content) = text(features: ("c2sc",))[#content]
+  #show regex("[A-Z]{2,}"): match => {
+    sc(match)
+  }
+
 //
 #title-slide[
 
