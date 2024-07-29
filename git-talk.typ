@@ -354,20 +354,72 @@
 ]
 
 #slide[
-  = What about MORGAN -- kent's model management system
 
-  - a git repository is _complementary_ to MORGAN system
-  - think of MORGAN model as a bundle, and
-  - git repo. as a history of atomic changes _within_ this bundle
+  = MORGAN
+
+  - git is _complementary_ to MORGAN
+  - think of MORGAN#footnote[Kent plc's model management system.] model as a bundle, and
+  - git repo as a history of atomic changes _within_ this bundle
   - history of (atomic) changes reside within the subfolder `.git`
   - with git, MORGAN will
     - not require an external diff system (git is _really_ fast)
     - not require the need to work with multiple version folders
-    - be simple to track changes
-    - be compact, and history is portable (i.e. one `.git` folder)
+    - be simpler to track changes
+    - be compact; entire history is available (i.e. one `.git` folder)
 
 ]
 
 #focus-slide[
   = thank you; questions?
+]
+
+#focus-slide[
+  
+  = backup
+
+]
+
+#focus-slide[
+  
+  = tools
+
+]
+
+#focus-slide[
+  
+  #quote(block:true, attribution: [Kevin Kelly])[
+    _Buying tools? Start with buying the absolute cheapest tools you can find. Upgrade the ones that you use a lot. If you wind up using something as a tool for a job, buy the very best you can afford._
+  ]
+
+]
+
+#slide[
+  
+  = GUI clients for git version control
+
+  + Sublime Merge (a personal favourite)
+    - by Sublime HQ (makers of Sublime Text), Australian
+    - pretty good software
+    - never have to see command line, if you so wish
+    - feature complete, very easy to use, clean interface
+    - commercial: 
+      - personal license: \$99/3y (allowed at work)
+      - commercial license: \$75/y
+      - trial period unlimited; all features available, no catch, be fair
+
+  + try others from here: #link("https://git-scm.com/downloads/guis")[git-scm.com/downloads/guis]
+]
+
+#slide[
+  
+  = [re] learn command line
+
+  - learn from the best: MIT course "The missing semester"
+  - Windows ships with linux (_aka_ Windows Subsystem for linux)
+  - alternatively, get a cheap raspberry pi to try linux
+  - practice doing things in command line, it is
+    - powerful
+    - versatile
+    - very low on resource demand
+
 ]
