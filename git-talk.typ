@@ -25,13 +25,14 @@
 
   = version control for engineers
 
-  The art of tracking atomic changes with git
+  _The art of tracking (atomic) changes with git_
 
-  #v(0.5em)
+  #image("/inc/kplc.png")
 
-  C Kunte
+  _lunch & learn_
 
-  August 2024
+  C Kunte, August 2024
+
 ]
 
 #slide[
@@ -52,7 +53,7 @@
   ]
 ]
 
-#focus-slide[
+#centered-slide[
   //  - Atomic changes, meaningful comments re. change
   = version control
 
@@ -88,19 +89,18 @@
   ]
 ]
 
-#focus-slide[
+#centered-slide[
   
   = git
-
 ]
 
 #slide[
   #side-by-side[
     = background
 
-    / 1991: Linus begins a hobby project called linux
+    / 1991: Linus begins a hobby project called *linux*
 
-    / 2005: Linus creates git to manage linux including kernel code contributions from others
+    / 2005: Linus creates *git* to manage linux including kernel code contributions from others
 
     / 2008: GitHub is born, makes git very popular; #highlight[94% market share] by 2022
 
@@ -115,7 +115,7 @@
     - a bunch of CLI programs
     - great software; bad UI/UX
     - open source, free
-    - GUI clients = sanity
+    - GUI clients == sanity
     - originally designed for linux FS; now available for all OSes
     - #highlight[for plain text] files 
     - not for tracking binary files
@@ -123,9 +123,11 @@
   ]
 ]
 
-#focus-slide[
+#centered-slide[
 
-  = version control _with_ git
+  = how to 
+
+  version control _with_ git
 
 ]
 
@@ -136,21 +138,20 @@
     )
   ][
 
-    = how to
+  = how to
 
-    - initialise a working folder
-    - check status
-    - add files
-    - commit added files
+    + initialise a working folder
+    + check status
+    + add (i.e. stage) files
+    + commit added files
 
     = basic commands
-
     ```bash
-    git init
-    git status
-    git add
-    git commit
-    git log
+    git init    # initialise
+    git status  # check status
+    git add     # stage file(s)
+    git commit  # commit changes
+    git log     # list commits
     ```
   ]
 ]
@@ -172,7 +173,7 @@
   ``` 
 ]
 
-#focus-slide[
+#centered-slide[
 
   = what just happened?
 ]
@@ -190,21 +191,21 @@
   - a command for taking a filesystem snapshot (of added files)
   - uses secure hash algorithm (SHA) #sym.arrow.r for data integrity
   - commits never change; IDs are computed from their contents
-  - Designed initially with SHA1; SHA256 used now to avoid collision
+  - Designed initially with SHA1; now using SHA256 to avoid collision
 
 ]
 
-#focus-slide[
+#centered-slide[
 
-  == commit is a two-stage process
-  *add* files (new, changed)\
-  *commit* those changes
+  = commit -- a 2-stage process
+  + *add* files (new, changed)
+  + *commit* (new, changed)
 
   i.e., recording change _explicitly_
 
 ]
 
-#focus-slide[
+#centered-slide[
 
   = git status
 
@@ -227,7 +228,7 @@
 ]
 
 
-#focus-slide[
+#centered-slide[
 
   = git log
 
@@ -249,7 +250,12 @@
   
 ]
 
-#focus-slide[
+#centered-slide[
+  = demo. #footnote[Switch to _Terminal_ / _Sublime Merge_]
+
+]
+
+#centered-slide[
 
   = ignore _certain_ files
 
@@ -277,7 +283,7 @@
   - `!` applies an exception to include only files with `.inp` extension
 ]
 
-#focus-slide[
+#centered-slide[
   
  = git config
 
@@ -315,87 +321,67 @@
   ```
 ]
 
-#focus-slide[
-  = demo.
+#centered-slide[
 
-  _(Terminal and GUI sessions)_
+  = version control
+
+  _best practices_
+
 ]
-
 #slide[
   
-  = version control -- best practices
-
   - make small, incremental changes
+
   - keep commits atomic
     - test before committing
     - get feedback through (e.g. peer) reviews
     - avoid committing incomplete work (units) and unnecessary files
     - commit often
     - write clear and concise commit messages
+
   - develop using branches (treat 'master' or 'main' branch sacred)
+
   - agree on a workflow / branching strategy
+
   - keep the repository clean and up to-date
 
 ]
 
-#slide[
-  = bibliography
+#centered-slide[
 
-  - `git help everyday` (most useful beginner's command)
-  - git source code management (#link("https://git-scm.com")[git-scm.com])
-  - git software in GUIs (#link("https://git-scm.com/downloads")[git-scm.com/downloads])
-  - git guides (#link("https://github.com/git-guides")[github.com/git-guides])
-  - getting git right (#link("https://www.atlassian.com/git")[atlassian.com/git])
-  - github docs (#link("https://docs.github.com/en")[docs.github.com/en])
-  - a git history (#link("https://blog.brachiosoft.com/en/posts/git/")[blog.brachiosoft.com/en/posts/git/])
-  - "how git works" illustrated (#link("https://wizardzines.com/zines/git")[wizardzines.com/zines/git])
-  - Linus's talk about git c. 2007 (#link("https://youtu.be/MjIPv8a0hU8")[youtu.be/MjIPv8a0hU8])
+  = MORGAN #footnote[Kent plc's model management system]
+
+  _with git_
 
 ]
-
 #slide[
 
-  = MORGAN
+  = git is _complementary_ to MORGAN
 
-  - git is _complementary_ to MORGAN
-  - think of MORGAN#footnote[Kent plc's model management system.] model as a bundle, and
-  - git repo as a history of atomic changes _within_ this bundle
-  - history of (atomic) changes reside within the subfolder `.git`
-  - with git, MORGAN will
-    - not require an external diff system (git is _really_ fast)
+  - MORGAN project as a global repository
+    - git repo as a history of traceable atomic changes _within_ it
+    - history resides within the subfolder `.git`
+
+  - with git, MORGAN will:
+    - not require an external diff system; git is _fast_ (18y of engineering)
     - not require the need to work with multiple version folders
-    - be simpler to track changes
-    - be compact; entire history is available (i.e. one `.git` folder)
+    - be simpler + accurate in tracking changes
+    - be compact; entire history of change is available
+    - be easiest to revert to earlier states/ver. with 1-click/command
 
 ]
 
-#focus-slide[
-  = thank you; questions?
-]
+#centered-slide[
 
-#focus-slide[
-  
-  = backup
-
-]
-
-#focus-slide[
-  
-  = tools
-
-]
-
-#focus-slide[
-  
   #quote(block:true, attribution: [Kevin Kelly])[
-    _Buying tools? Start with buying the absolute cheapest tools you can find. Upgrade the ones that you use a lot. If you wind up using something as a tool for a job, buy the very best you can afford._
+    _*Buying tools?* Start with the cheapest you can find. Upgrade the ones that you use a lot. If you wind-up using for work, then buy the very best you can afford._
   ]
 
 ]
 
 #slide[
   
-  = GUI clients for git version control
+  = GUI clients for git
 
   + Sublime Merge (a personal favourite)
     - by Sublime HQ (makers of Sublime Text), Australian
@@ -407,19 +393,55 @@
       - commercial license: \$75/y
       - trial period unlimited; all features available, no catch, be fair
 
-  + try others from here: #link("https://git-scm.com/downloads/guis")[git-scm.com/downloads/guis]
+  + try others: #link("https://git-scm.com/downloads/guis")[git-scm.com/downloads/guis]
 ]
 
 #slide[
   
-  = [re] learn command line
+  = [re] learn to use command line interface
 
+  - a query-response system (e.g. ChatGPT is a CLI of sorts)
   - learn from the best: MIT course "The missing semester"
   - Windows ships with linux (_aka_ Windows Subsystem for linux)
-  - alternatively, get a cheap raspberry pi to try linux
+  - alternatively, get a cheap SBC (e.g. Raspberry Pi) to try linux
   - practice doing things in command line, it is
     - powerful
     - versatile
     - very low on resource demand
+
+]
+
+#slide[
+  
+  = recap
+
+  + git -- today's _state of the art_ in version control, portable, distributed
+  + a _two-stage_ process, i.e., add, commit
+  + every commit is a _snapshot_ of working folder's filesystem
+  + git computes diffs between commits on the fly, very fast
+  + git is like a machine for time-travel through file (or model) history
+  + works best with _plain text_ files, not useful for binary files (no diffs)
+  + all history resides within .git subfolder under the working folder
+
+]
+
+#slide[
+  = resources
+
+  - `git help everyday` -- most helpful beginner's command
+  - git source code management (#link("https://git-scm.com")[git-scm.com])
+  - git GUI software (#link("https://git-scm.com/downloads")[git-scm.com/downloads])
+  - git guides (#link("https://github.com/git-guides")[github.com/git-guides])
+  - getting git right (#link("https://www.atlassian.com/git")[atlassian.com/git])
+  - github docs (#link("https://docs.github.com/en")[docs.github.com/en])
+  - a git history (#link("https://blog.brachiosoft.com/en/posts/git/")[blog.brachiosoft.com/en/posts/git/])
+  - "how git works" illustrated by J Evans (#link("https://wizardzines.com/zines/git")[wizardzines.com/zines/git])
+  - Linus's talk about git c. 2007 (#link("https://youtu.be/MjIPv8a0hU8")[youtu.be/MjIPv8a0hU8])
+
+]
+
+#centered-slide[
+
+  = thank you; questions?
 
 ]
