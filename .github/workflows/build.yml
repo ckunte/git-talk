@@ -1,0 +1,26 @@
+name: Build Typst document
+on: 
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: prep typst
+        uses: typst-community/setup-typst@v3
+      - run: typst compile git-talk.typ git-talk.pdf
+
+      - name: release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            git-talk.pdf
