@@ -364,13 +364,12 @@
   
   = [Re] learn to use command line interface
 
-  - a query-response system (e.g. ChatGPT is a CLI of sorts)
-  - learn from the best: MIT course "The missing semester" #footnote[MIT The missing semester of your CS education, #link("https://missing.csail.mit.edu")[missing.csail.mit.edu]]
+  - a query-response system
+  - learn from MIT course #footnote[_The missing semester of your CS education_, #link("https://missing.csail.mit.edu")[missing.csail.mit.edu]]
   - Windows ships with linux (_aka_ Windows Subsystem for linux)
-  - alternatively, get a cheap SBC (e.g. Raspberry Pi) to try linux
+  - alternatively, get a cheap SBC (e.g., Raspberry Pi) to try linux
   - practice doing things in command line, it is
-    - powerful
-    - versatile
+    - powerful and versatile
     - very low on resource demand
 
 ]
@@ -385,7 +384,7 @@
   + git computes diffs between commits on the fly, very fast
   + git is like a machine for time-travel through file (or model) history
   + works best with _plain text_ files, not useful for binary files (no diffs)
-  + all history resides within .git subfolder under the working folder
+  + all history resides within `.git` subfolder under the working folder
 
 ]
 
