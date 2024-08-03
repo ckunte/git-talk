@@ -4,8 +4,4 @@ This is a talk I gave at work in August 2024. This repository contains the sourc
 
 [r]: https://github.com/ckunte/git-talk/releases "Download the slidepack"
 
-### Credits
-
-- PhD Comics
-- XKCD
-- Sublime HQ for Bash syntax
+_(Credits: PhD Comics, XKCD, and Sublime HQ.)_
