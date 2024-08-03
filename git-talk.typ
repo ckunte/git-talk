@@ -301,13 +301,11 @@
     - Commits signed with digital keys to prevent author spoofing
     - GPG or SSH keys used for signing commits, pushing to remote
 
-#v(1em)
-
   ```bash
   [user]
     name = Chetan Kunte
-    email = 177423+ckunte@users.noreply.github.com
-    signingkey = ~/.ssh/id_ed25519.pub
+    email = <my email address>
+    signingkey = ~/.ssh/<my_signing_key>.pub
   [commit]
     gpgsign = true
   [tag]
