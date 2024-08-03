@@ -215,15 +215,6 @@
 
 ]
 
-#slide[
-
-  #figure(
-    image("/inc/smerge0.png", height: auto),
-  ) <sm0>
-  
-]
-
-
 #centered-slide[
 
   = git log
@@ -319,6 +310,12 @@
   [core]
     autocrlf = input
   ```
+  #v(1fr)
+
+  _Line endings_
+  / LF: line feed (`\n`) in UNIX-like OSes
+  / CRLF: carriage return, followed by line feed (`\r\n`) in Windows
+
 ]
 
 #slide[
