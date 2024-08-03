@@ -63,10 +63,10 @@
   #side-by-side[
   = Why
 
-    - recording change _explicitly_
-    - _atomic_ level traceability
-    - retaining full history
-    - better diffs
+    - recording change explicitly
+    - #highlight[atomic level traceability]
+    - #highlight[better diffs]
+    - #highlight[full history access]
     - branch out #sym.arrow.r work on parts #sym.arrow.r merge back
     - reuse, collaboration
     - disciplined work
@@ -84,7 +84,7 @@
   / 1992: TeamWare
   / 2000: Subversion, BitKeeper
   / 2003: Monotone
-  / 2005: git, Mercurial
+  / 2005: *git*, Mercurial
 
   ]
 ]
@@ -108,12 +108,12 @@
     = git
     
     - DVCS, portable
-    - a bunch of CLI programs
+    - a bunch of CLI programs (100+)
     - great software; bad UI/UX
-    - open source, free
+    - open source and free
     - GUI clients == sanity
     - originally designed for linux FS; now available for all OSes
-    - #highlight[for plain text] files 
+    - for tracking #highlight[plain text] files 
     - not useful for tracking binary files (no diffs)
 
   ]
@@ -137,8 +137,8 @@
   = Steps, basic commands
     + Initialise a working folder
     + Check status
-    + Add (i.e. stage) files
-    + Commit new and changed files
+    + #highlight[Add (i.e. stage) files]
+    + #highlight[Commit new and changed files]
     + List commits
 
     ```bash
@@ -177,7 +177,7 @@
 
   == git init
   - creates a subfolder named `.git` within the working folder
-  - `.git` folder collects filesystem snapshots of the working folder
+  - `.git` folder collects #highlight[filesystem snapshots] of the working folder
 
   == git add
   - for tracking files of interest, they first need to be added
@@ -185,8 +185,9 @@
   == git commit
   - a command for taking a filesystem snapshot (of added files)
   - uses secure hash algorithm (SHA) #sym.arrow.r for data integrity
-  - commits never change; IDs are computed from their contents
+  - #highlight[commits never change]\; IDs are #highlight[computed from their contents]
   - Designed initially with SHA1; now using SHA256 to avoid collision
+  - Every commit hash is #highlight[40 bytes] long to #highlight[ensure uniqueness]
 
 ]
 
