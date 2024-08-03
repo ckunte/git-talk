@@ -26,10 +26,6 @@
 
   _The art of tracking (atomic) changes with git_
 
-  #image("/inc/kplc.png") 
-
-  _lunch & learn_
-
   C Kunte, August 2024
 
 ]
@@ -51,10 +47,8 @@
   - Ignore certain files
   - Configuring git (for remote work)
   - Best practices
-  - MORGAN with git
   - GUI client(s), CLI
   - Recap, resources
-  - Q&A
 
   ]
 ]
@@ -342,23 +336,6 @@
   - develop using branches (treat 'master' or 'main' branch sacred)
   - agree on a workflow / branching strategy
   - keep the repository clean and up to-date
-
-]
-
-#slide[
-
-  = MORGAN with git
-
-  - git is _complementary_ to MORGAN (Kent's model management system)
-  - MORGAN project as a global repository
-    - git repo as a history of traceable atomic changes _within_ it
-    - history resides within the subfolder `.git`
-  - with git, MORGAN will:
-    - not require an external diff system; git is _fast_ (18y of engineering)
-    - not require the need to work with multiple version folders
-    - be simpler + accurate in tracking changes
-    - be compact; entire history of change is available
-    - be easiest to revert to earlier states/ver. with 1-click/command
 
 ]
 
