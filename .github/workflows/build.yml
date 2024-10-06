@@ -25,7 +25,7 @@ jobs:
       - run: typst compile git-talk.typ --font-path=fonts
 
       - name: release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
