@@ -14,9 +14,15 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
 
+      - name: checkout fonts repo
+        uses: actions/checkout@v4
+        with:
+          repository: ckunte/fonts
+          path: fonts
+
       - name: prep typst
         uses: typst-community/setup-typst@v3
-      - run: typst compile git-talk.typ git-talk.pdf
+      - run: typst compile git-talk.typ --font-path=fonts
 
       - name: release
         uses: softprops/action-gh-release@v1

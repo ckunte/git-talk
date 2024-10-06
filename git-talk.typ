@@ -6,10 +6,11 @@
     footer: [VERSION CONTROL _for_ ENGINEERS],
   )
   #set text(
+    font: "Segoe UI",
     top-edge: "cap-height",
     bottom-edge: "baseline",
     number-type: "old-style",
-    size:24pt
+    size:21pt
   ) // main font used
   #show raw: set text(size: 18pt) // font for code
   #set raw(syntaxes: "/inc/Bash.sublime-syntax") // for highlighting
