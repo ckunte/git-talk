@@ -1,113 +1,102 @@
-// preamble 
-  #import "@preview/polylux:0.3.1": *
-  #import themes.simple: *
-  #set page(paper: "presentation-16-9")
-  #show: simple-theme.with(
-    footer: [VERSION CONTROL _for_ ENGINEERS],
-  )
-  #set text(
-    font: "Segoe UI",
-    top-edge: "cap-height",
-    bottom-edge: "baseline",
-    number-type: "old-style",
-    size:21pt
-  ) // main font used
-  #show raw: set text(size: 18pt) // font for code
-  #set raw(syntaxes: "/inc/Bash.sublime-syntax") // for highlighting
-  #show link: set text(fill: rgb(0, 0, 255)) // show links w/ colour
-  #let sc(content) = text(features: ("c2sc",))[#content]
-  #show regex("[A-Z]{2,}"): match => {
-    sc(match)
-  }
+#import "@preview/polylux:0.4.0": *
 
-//
-#title-slide[
+#set page(
+  paper: "presentation-16-9",
+  footer: align(right, text(size: 9pt, toolbox.slide-number)),
+  margin: auto,
+)
+#set text(
+  font: "Segoe UI",
+  size: 18pt,
+)
+#let sc(content) = text(features: ("c2sc",))[#content]
+#show regex("[A-Z]{2,}"): match => {
+  sc(match)
+}
 
-  = VERSION CONTROL _for_ ENGINEERS
+// #show math.equation: set text(font: "STIX Two Math")
+#show heading: set block(below: 2em)
+
+// link properties
+#show cite: set text(fill: maroon) // set cite colour
+#show ref: set text(fill: rgb(0, 0, 128)) // set reference colour
+#show link: set text(fill: rgb(0, 0, 255)) // set link colour
+#show link: underline
+#show footnote: set text(fill: maroon)
+#show footnote.entry: set text(fill: maroon)
+
+// title slide
+
+#slide[
+  #set page(footer: none)
+  #set align(center + horizon)
+
+  #toolbox.side-by-side[
+    #rect(height: 1.2fr)[#image("/inc/final.png")]
+  ][
+    
+  #text(1.8em)[*VERSION CONTROL \ _for_ \ ENGINEERS*]
 
   _The art of tracking (atomic) changes with git_
 
-  C Kunte, August 2024
+  C Kunte \ August 2024
+
+  ]
 
 ]
 
 #slide[
-  #side-by-side[
 
-  #rect(
-    image("/inc/final.png") // courtesy: PhD comics
-  )
+  #set page(columns: 2)
+  #outline(depth: 2)
 
-  ][
-
-  = Agenda
-  - Version control
-  - git (background, git)
-  - How to, basic commands
-  - Demo.
-  - Ignore certain files
-  - Configuring git (for remote work)
-  - Best practices
-  - GUI client(s), CLI
-  - Recap, resources
-
-  ]
 ]
 
-#centered-slide[
-  //  - Atomic changes, meaningful comments re. change
+#slide[
+  #set align(center + horizon)
   = Version control
 
 ]
 
 #slide[
-  #side-by-side[
-  = Why
 
-    - recording change explicitly
-    - #highlight[atomic level traceability]
-    - #highlight[better diffs]
-    - #highlight[full history access]
-    - branch out #sym.arrow.r work on parts #sym.arrow.r merge back
-    - reuse, collaboration
-    - disciplined work
-    - habit worth cultivating
+  #toolbox.side-by-side[
 
-  ][
-  = Types
+      == Why?
 
-  / CVCS: centralised
-  / DVCS: distributed
+      - recording change explicitly
+      - #highlight[atomic level traceability]
+      - #highlight[better diffs]
+      - #highlight[full history access]
+      - branch out #sym.arrow.r work on parts #sym.arrow.r merge back
+      - reuse, collaboration
+      - disciplined work
+      - habit worth cultivating
 
-  = Software
+    ][
 
-  / 1986: CVS
-  / 1992: TeamWare
-  / 2000: Subversion, BitKeeper
-  / 2003: Monotone
-  / 2005: *git*, Mercurial
+      == Types
 
-  ]
-]
+      / CVCS: centralised
+      / DVCS: distributed
 
-#centered-slide[
-  
-  = git
+      == Software
+
+      / 1986: CVS
+      / 1992: TeamWare
+      / 2000: Subversion, BitKeeper
+      / 2003: Monotone
+      / 2005: *git*, Mercurial
+
+    ]
 ]
 
 #slide[
-  #side-by-side[
-    = Background
 
-    / 1991: Linus begins a hobby project called *linux*
+  #set page(columns: 2)
 
-    / 2005: Linus creates *git* to manage linux including kernel code contributions from others
+  = git
 
-    / 2008: GitHub is born, makes git very popular; git captures #highlight[94% of market] by 2022
-
-  ][
-    = git
-    
     - DVCS, portable
     - a bunch of CLI programs (100+)
     - great software; bad UI/UX
@@ -117,25 +106,28 @@
     - for tracking #highlight[plain text] files 
     - not useful for tracking binary files (no diffs)
 
-  ]
-]
+   == Background
 
-#centered-slide[
+    / 1991: Linus begins a hobby project called *linux*
 
-  = How to
+    / 2005: Linus creates *git* to manage linux including kernel code contributions from others
 
-  Version control _with_ git
+    / 2008: GitHub is born, makes git very popular; git captures #highlight[94% of market] by 2022
 
 ]
 
 #slide[
-  #side-by-side[
-    #figure(
-      image("/inc/git-xkcd.png"), // courtesy: https://xkcd.com/1597/
-    )
+
+  = How to version control with git
+
+  #toolbox.side-by-side[
+
+    #set align(center + horizon)
+    #rect(stroke: none, height: 1fr)[#image("/inc/git-xkcd.png")]
+
   ][
 
-  = Steps, basic commands
+  == Steps, basic commands
     + Initialise a working folder
     + Check status
     + #highlight[Add (i.e. stage) files]
@@ -169,21 +161,27 @@
   ``` 
 ]
 
-#centered-slide[
+#slide[
 
+  #set align(center + horizon)
   = What just happened?
+
 ]
 
 #slide[
+#set page(columns: 2)
 
   == git init
+
   - creates a subfolder named `.git` within the working folder
   - `.git` folder collects #highlight[filesystem snapshots] of the working folder
 
   == git add
+
   - for tracking files of interest, they first need to be added
 
   == git commit
+
   - a command for taking a filesystem snapshot (of added files)
   - uses secure hash algorithm (SHA) #sym.arrow.r for data integrity
   - #highlight[commits never change]\; IDs are #highlight[computed from their contents]
@@ -192,63 +190,45 @@
 
 ]
 
-#centered-slide[
-
-  = commit -- a 2-stage process
+#slide[
+  #set align(center + horizon)
+  = commit -- a two-stage process
   + *add* files (new, changed)
   + *commit* (new, changed)
 
   i.e., recording change _explicitly_
-
-]
-
-#centered-slide[
-
-  = git status
-
 ]
 
 #slide[
+  #set align(center + horizon)
+
+  = git status
 
   #figure(
-    image("/inc/status.png", width: auto),
+    image("/inc/status.png", height: auto),
   ) <status>
 
 ]
 
-#centered-slide[
+#slide[
+  #set align(center + horizon)
 
   = git log
-
-]
-
-#slide[
-
-  #figure(
-    image("/inc/gitlog.png", height: auto),
-  ) <gitlog>
-    
-]
-
-#slide[
 
   #figure(
     image("/inc/smerge.png", height: auto),
   ) <sm1>
-  
-]
-
-#centered-slide[
-  = Demo. #footnote[Switch to _Terminal_ / _Sublime Merge_]
 
 ]
 
-#centered-slide[
+#slide[
+  #set align(center + horizon)
 
-  = Ignore certain files
+  = Demo.
+
+  _Switch to Terminal and Sublime Merge_
 
 ]
-
 
 #slide[
   = .gitignore
@@ -256,7 +236,7 @@
   - git has a provision for ignoring files of disinterest
   - `.gitignore` file in the repository does the job
 
-  #side-by-side[
+  #toolbox.side-by-side[
     
   *Exclude* example
 
@@ -278,40 +258,39 @@
   ]
 ]
 
-#centered-slide[
-  
- = Configuring git
+#slide[
+
+  #set align(center + horizon)
+  = Configuring git
 
 ]
 
 #slide[
+  = .gitconfig
 
-= .gitconfig
-
-  - Handy if commits are pushed to a remote server
-  - Cryptographic identity in the open-source world is fundamental
-    - Commits signed with digital keys to prevent author spoofing
-    - GPG or SSH keys used for signing commits, pushing to remote
-
-  ```bash
-  [user]
-    name = Chetan Kunte
-    email = <my email address>
-    signingkey = ~/.ssh/<my_signing_key>.pub
-  [commit]
-    gpgsign = true
-  [tag]
-    gpgsign = true
-  [gpg]
-    format = ssh
-  [gpg "ssh"]
-    allowedSignersFile = ~/.ssh/allowed_signers
-  [init]
-    defaultBranch = master
-  [core]
-    autocrlf = input
-  ```
-  #v(1fr)
+    - Handy if commits are pushed to a remote server
+    - Cryptographic identity in the open-source world is fundamental
+      - Commits signed with digital keys to prevent author spoofing
+      - GPG or SSH keys used for signing commits, pushing to remote
+    ```bash
+    [user]
+      name = Chetan Kunte
+      email = <my email address>
+      signingkey = ~/.ssh/<my_signing_key>.pub
+    [commit]
+      gpgsign = true
+    [tag]
+      gpgsign = true
+    [gpg]
+      format = ssh
+    [gpg "ssh"]
+      allowedSignersFile = ~/.ssh/allowed_signers
+    [init]
+      defaultBranch = master
+    [core]
+      autocrlf = input
+    ```
+    #v(1fr)
 
   _Line endings_
   / LF: line feed (`\n`) in UNIX-like OSes
@@ -336,10 +315,14 @@
 
 ]
 
-#centered-slide[
 
+#slide[
+
+  #set align(center + horizon)
+
+  = Buying tools?
   #quote(block:true, attribution: [Kevin Kelly])[
-    _*Buying tools?* Start with the cheapest. Upgrade the ones that you use a lot. If you use for work, then buy the very best you can afford._
+    _Start with the cheapest. Upgrade the ones that you use a lot. If you use for work, then buy the very best you can afford._
   ]
 
 ]
@@ -405,8 +388,7 @@
 
 ]
 
-#centered-slide[
-
-  = Thank you. Questions?
-
+#slide[
+  #set align(center + horizon)
+  #text(1.5em)[*Thank you. Questions?*]
 ]
